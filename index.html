@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>POV Sound - Professional DJ Services in Swansea</title>
+    <title>POV Sound - South Wales DJ & Events | Professional DJ Services</title>
     <style>
         * {
             margin: 0;
@@ -12,34 +12,31 @@
         }
 
         :root {
-            --primary: #1a1a2e;
-            --secondary: #16213e;
+            --primary: #000000;
             --accent: #ff006e;
             --purple: #8338ec;
             --blue: #3a86ff;
-            --orange: #fb5607;
-            --yellow: #ffbe0b;
-            --light: #f5f5f5;
-            --text-light: #ecf0f1;
+            --light-gray: #f8f8f8;
+            --gray: #666666;
+            --white: #ffffff;
         }
 
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Arial', sans-serif;
             line-height: 1.6;
-            color: #333;
-            overflow-x: hidden;
+            color: var(--primary);
+            background: var(--white);
         }
 
         /* Navigation */
         nav {
-            background: rgba(26, 26, 46, 0.95);
-            backdrop-filter: blur(10px);
+            background: var(--white);
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
-            padding: 1rem 0;
-            transition: all 0.3s ease;
+            padding: 1.5rem 0;
+            border-bottom: 1px solid #eee;
         }
 
         .nav-container {
@@ -77,113 +74,49 @@
         .nav-links {
             display: flex;
             list-style: none;
-            gap: 2rem;
+            gap: 3rem;
         }
 
         .nav-links a {
-            color: var(--text-light);
+            color: var(--primary);
             text-decoration: none;
-            transition: all 0.3s ease;
             font-weight: 500;
-            position: relative;
+            transition: opacity 0.3s ease;
         }
 
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 3px;
-            background: linear-gradient(45deg, var(--accent), var(--purple));
-            transition: width 0.3s ease;
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
+        .nav-links a:hover {
+            opacity: 0.6;
         }
 
         /* Hero Section */
         .hero {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            height: 100vh;
+            background: var(--white);
+            min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: "";
-            position: absolute;
-            width: 150%;
-            height: 150%;
-            background: radial-gradient(circle at 20% 80%, transparent 50%, rgba(255, 0, 110, 0.1) 50.5%, transparent 51%),
-                        radial-gradient(circle at 80% 20%, transparent 50%, rgba(131, 56, 236, 0.1) 50.5%, transparent 51%),
-                        radial-gradient(circle at 40% 40%, transparent 50%, rgba(58, 134, 255, 0.1) 50.5%, transparent 51%);
-            animation: float 20s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translate(0, 0) rotate(0deg); }
-            33% { transform: translate(30px, -30px) rotate(120deg); }
-            66% { transform: translate(-20px, 20px) rotate(240deg); }
+            padding: 2rem;
+            margin-top: 80px;
         }
 
         .hero-content {
             text-align: center;
-            color: var(--text-light);
-            z-index: 1;
-            padding: 0 2rem;
+            max-width: 800px;
         }
 
         .hero h1 {
-            font-size: 4.5rem;
-            margin-bottom: 1rem;
-            animation: slideInDown 1s ease;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-
-        .hero h1 span {
-            background: linear-gradient(45deg, var(--yellow), var(--orange), var(--accent));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: glow 2s ease-in-out infinite;
-        }
-
-        @keyframes glow {
-            0%, 100% { filter: drop-shadow(0 0 10px rgba(255, 0, 110, 0.5)); }
-            50% { filter: drop-shadow(0 0 20px rgba(255, 0, 110, 0.8)); }
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 300;
+            letter-spacing: -1px;
+            line-height: 1.1;
         }
 
         .hero .tagline {
-            font-size: 1.8rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
-            animation: slideInUp 1s ease 0.3s both;
-        }
-
-        @keyframes slideInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes slideInUp {
-            from {
-                opacity: 0;
-                transform: translateY(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            font-size: 1.3rem;
+            margin-bottom: 3rem;
+            color: var(--gray);
+            font-weight: 300;
         }
 
         .cta-buttons {
@@ -191,88 +124,33 @@
             gap: 1.5rem;
             justify-content: center;
             flex-wrap: wrap;
-            animation: slideInUp 1s ease 0.6s both;
         }
 
         .cta-button {
             display: inline-block;
             padding: 1rem 2.5rem;
-            background: linear-gradient(45deg, var(--accent), var(--purple));
-            color: white;
+            background: var(--primary);
+            color: var(--white);
             text-decoration: none;
-            border-radius: 50px;
-            font-weight: bold;
+            font-weight: 500;
             transition: all 0.3s ease;
-            box-shadow: 0 5px 20px rgba(233, 69, 96, 0.3);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .cta-button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, var(--blue), var(--purple));
-            transition: left 0.3s ease;
-        }
-
-        .cta-button:hover::before {
-            left: 0;
-        }
-
-        .cta-button span {
-            position: relative;
-            z-index: 1;
+            border: 2px solid var(--primary);
         }
 
         .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 30px rgba(233, 69, 96, 0.4);
+            background: var(--white);
+            color: var(--primary);
         }
 
         .cta-button.secondary {
-            background: transparent;
-            border: 2px solid white;
+            background: var(--white);
+            color: var(--primary);
+            border: 2px solid var(--primary);
         }
 
-        .cta-button.secondary::before {
-            background: rgba(255, 255, 255, 0.1);
-        }
-
-        /* Musical Notes Animation */
-        .music-notes {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            z-index: 0;
-        }
-
-        .note {
-            position: absolute;
-            font-size: 2rem;
-            animation: floatUp 8s linear infinite;
-            opacity: 0.1;
-        }
-
-        @keyframes floatUp {
-            from {
-                transform: translateY(100vh) rotate(0deg);
-                opacity: 0;
-            }
-            10% {
-                opacity: 0.1;
-            }
-            90% {
-                opacity: 0.1;
-            }
-            to {
-                transform: translateY(-100vh) rotate(360deg);
-                opacity: 0;
-            }
+        .cta-button.secondary:hover {
+            background: var(--primary);
+            color: var(--white);
         }
 
         /* Section Styles */
@@ -284,278 +162,48 @@
 
         .section-title {
             text-align: center;
-            font-size: 3rem;
-            margin-bottom: 3rem;
-            background: linear-gradient(45deg, var(--accent), var(--purple));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            position: relative;
-        }
-
-        .section-title::after {
-            content: "";
-            display: block;
-            width: 100px;
-            height: 4px;
-            background: linear-gradient(45deg, var(--accent), var(--purple));
-            margin: 1rem auto;
-            border-radius: 2px;
+            font-size: 2.5rem;
+            margin-bottom: 4rem;
+            font-weight: 300;
+            letter-spacing: -1px;
         }
 
         /* Services Grid */
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 2rem;
             margin-top: 3rem;
         }
 
         .service-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 20px;
-            box-shadow: 0 5px 30px rgba(0,0,0,0.1);
+            background: var(--white);
+            padding: 3rem;
+            border: 1px solid #eee;
             transition: all 0.3s ease;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(45deg, transparent, rgba(131, 56, 236, 0.05), transparent);
-            transform: rotate(45deg);
-            transition: all 0.5s ease;
-        }
-
-        .service-card:hover::before {
-            top: -100%;
-            left: -100%;
+            text-align: left;
         }
 
         .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(131, 56, 236, 0.2);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
 
         .service-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            display: inline-block;
-            animation: wiggle 2s ease-in-out infinite;
-        }
-
-        .service-card:nth-child(2) .service-icon { animation-delay: 0.2s; }
-        .service-card:nth-child(3) .service-icon { animation-delay: 0.4s; }
-        .service-card:nth-child(4) .service-icon { animation-delay: 0.6s; }
-        .service-card:nth-child(5) .service-icon { animation-delay: 0.8s; }
-        .service-card:nth-child(6) .service-icon { animation-delay: 1s; }
-
-        @keyframes wiggle {
-            0%, 100% { transform: rotate(0deg); }
-            25% { transform: rotate(-5deg); }
-            75% { transform: rotate(5deg); }
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            display: block;
         }
 
         .service-card h3 {
-            color: var(--primary);
             margin-bottom: 1rem;
             font-size: 1.5rem;
+            font-weight: 500;
         }
 
-        /* Quote Modal */
-        .quote-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.8);
-            z-index: 2000;
-            overflow-y: auto;
-        }
-
-        .quote-modal.active {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .quote-form-container {
-            background: white;
-            border-radius: 20px;
-            padding: 3rem;
-            max-width: 600px;
-            width: 90%;
-            margin: 2rem;
-            position: relative;
-            animation: slideIn 0.3s ease;
-        }
-
-        @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateY(-50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .close-modal {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            background: none;
-            border: none;
-            font-size: 2rem;
-            cursor: pointer;
-            color: #666;
-            transition: color 0.3s ease;
-        }
-
-        .close-modal:hover {
-            color: var(--accent);
-        }
-
-        .quote-form h2 {
-            text-align: center;
-            margin-bottom: 2rem;
-            background: linear-gradient(45deg, var(--accent), var(--purple));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: bold;
-            color: var(--primary);
-        }
-
-        .form-group input,
-        .form-group textarea,
-        .form-group select {
-            width: 100%;
-            padding: 1rem;
-            border: 2px solid #eee;
-            border-radius: 10px;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus,
-        .form-group select:focus {
-            outline: none;
-            border-color: var(--purple);
-            box-shadow: 0 0 0 3px rgba(131, 56, 236, 0.1);
-        }
-
-        .form-group textarea {
-            min-height: 120px;
-            resize: vertical;
-        }
-
-        .submit-btn {
-            background: linear-gradient(45deg, var(--accent), var(--purple));
-            color: white;
-            border: none;
-            padding: 1rem 2rem;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            width: 100%;
-            box-shadow: 0 5px 20px rgba(131, 56, 236, 0.3);
-        }
-
-        .submit-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 30px rgba(131, 56, 236, 0.4);
-        }
-
-        /* Contact Section */
-        .contact-info {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .contact-card {
-            text-align: center;
-            padding: 2rem;
-            background: linear-gradient(135deg, #667eea10 0%, #764ba210 100%);
-            border-radius: 20px;
-            transition: all 0.3s ease;
-        }
-
-        .contact-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(131, 56, 236, 0.2);
-        }
-
-        .contact-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            display: inline-block;
-            background: linear-gradient(45deg, var(--accent), var(--purple));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        /* Footer */
-        footer {
-            background: var(--primary);
-            color: var(--text-light);
-            text-align: center;
-            padding: 2rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        footer::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, rgba(131, 56, 236, 0.1), rgba(255, 0, 110, 0.1));
-            animation: shimmer 3s ease-in-out infinite;
-        }
-
-        @keyframes shimmer {
-            0%, 100% { transform: translateX(-100%); }
-            50% { transform: translateX(100%); }
-        }
-
-        footer p {
-            position: relative;
-            z-index: 1;
-        }
-
-        /* Mobile Menu */
-        .mobile-menu-toggle {
-            display: none;
-            background: none;
-            border: none;
-            color: white;
-            font-size: 1.5rem;
-            cursor: pointer;
+        .service-card p {
+            color: var(--gray);
+            line-height: 1.8;
         }
 
         /* Gallery */
@@ -568,40 +216,47 @@
             display: flex;
             justify-content: center;
             gap: 2rem;
-            margin-bottom: 2rem;
+            margin-bottom: 3rem;
             flex-wrap: wrap;
         }
 
         .category-btn {
             background: none;
-            border: 2px solid var(--purple);
-            color: var(--purple);
-            padding: 0.5rem 1.5rem;
-            border-radius: 25px;
+            border: none;
+            color: var(--gray);
+            padding: 0.5rem 0;
             cursor: pointer;
+            font-weight: 500;
             transition: all 0.3s ease;
-            font-weight: bold;
+            position: relative;
+            font-size: 1rem;
+        }
+
+        .category-btn::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s ease;
         }
 
         .category-btn.active {
-            background: linear-gradient(45deg, var(--accent), var(--purple));
-            color: white;
-            border-color: transparent;
+            color: var(--primary);
         }
 
-        .category-btn:hover {
-            background: linear-gradient(45deg, var(--accent), var(--purple));
-            color: white;
-            border-color: transparent;
-            transform: scale(1.05);
+        .category-btn.active::after,
+        .category-btn:hover::after {
+            width: 100%;
         }
 
         .gallery-slider {
             position: relative;
-            height: 500px;
+            height: 600px;
             overflow: hidden;
-            border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            background: var(--light-gray);
         }
 
         .gallery-item {
@@ -627,15 +282,20 @@
             bottom: 0;
             left: 0;
             right: 0;
-            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
             color: white;
-            padding: 2rem;
-            text-align: center;
+            padding: 3rem 2rem 2rem;
         }
 
         .gallery-caption h3 {
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             margin-bottom: 0.5rem;
+            font-weight: 400;
+        }
+
+        .gallery-caption p {
+            opacity: 0.8;
+            font-weight: 300;
         }
 
         .gallery-nav {
@@ -646,46 +306,212 @@
             border: none;
             width: 50px;
             height: 50px;
-            border-radius: 50%;
             cursor: pointer;
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             transition: all 0.3s ease;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .gallery-nav:hover {
             background: white;
-            transform: translateY(-50%) scale(1.1);
         }
 
         .gallery-nav.prev {
-            left: 1rem;
+            left: 2rem;
         }
 
         .gallery-nav.next {
-            right: 1rem;
+            right: 2rem;
         }
 
         .gallery-dots {
             display: flex;
             justify-content: center;
-            gap: 0.5rem;
-            margin-top: 1rem;
+            gap: 0.8rem;
+            margin-top: 2rem;
         }
 
         .dot {
-            width: 10px;
-            height: 10px;
+            width: 8px;
+            height: 8px;
             border-radius: 50%;
-            background: #ccc;
+            background: #ddd;
             cursor: pointer;
             transition: all 0.3s ease;
         }
 
         .dot.active {
-            background: linear-gradient(45deg, var(--accent), var(--purple));
-            width: 30px;
-            border-radius: 5px;
+            background: var(--primary);
+            width: 24px;
+            border-radius: 4px;
+        }
+
+        /* Quote Modal */
+        .quote-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 2000;
+            overflow-y: auto;
+        }
+
+        .quote-modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .quote-form-container {
+            background: white;
+            padding: 3rem;
+            max-width: 600px;
+            width: 90%;
+            margin: 2rem;
+            position: relative;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: none;
+            border: none;
+            font-size: 2rem;
+            cursor: pointer;
+            color: var(--gray);
+            transition: color 0.3s ease;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .close-modal:hover {
+            color: var(--primary);
+        }
+
+        .quote-form h2 {
+            margin-bottom: 2rem;
+            font-weight: 300;
+            font-size: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+            background: var(--white);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: opacity 0.3s ease;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            opacity: 0.8;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: var(--light-gray);
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .contact-card {
+            text-align: center;
+        }
+
+        .contact-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .contact-card h3 {
+            margin-bottom: 1rem;
+            font-weight: 500;
+            font-size: 1.3rem;
+        }
+
+        .contact-card p {
+            color: var(--gray);
+            margin: 0.3rem 0;
+        }
+
+        .contact-card p strong {
+            color: var(--primary);
+            font-weight: 500;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary);
+            color: var(--white);
+            text-align: center;
+            padding: 3rem 2rem;
+        }
+
+        footer p {
+            margin: 0.5rem 0;
+            opacity: 0.9;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
         }
 
         @media (max-width: 768px) {
@@ -695,18 +521,16 @@
                 top: 100%;
                 left: 0;
                 right: 0;
-                background: var(--primary);
+                background: var(--white);
                 flex-direction: column;
-                padding: 1rem;
-                gap: 1rem;
+                padding: 2rem;
+                gap: 1.5rem;
+                border-bottom: 1px solid #eee;
+                box-shadow: 0 5px 20px rgba(0,0,0,0.1);
             }
 
             .nav-links.active {
                 display: flex;
-            }
-
-            .nav-links a::after {
-                display: none;
             }
 
             .mobile-menu-toggle {
@@ -714,11 +538,11 @@
             }
 
             .hero h1 {
-                font-size: 3rem;
+                font-size: 2.5rem;
             }
 
             .hero .tagline {
-                font-size: 1.2rem;
+                font-size: 1.1rem;
             }
 
             .cta-buttons {
@@ -734,36 +558,24 @@
             }
 
             .gallery-slider {
-                height: 300px;
-            }
-
-            .gallery-caption h3 {
-                font-size: 1.2rem;
+                height: 400px;
             }
 
             .gallery-nav {
                 width: 40px;
                 height: 40px;
-                font-size: 1.2rem;
             }
 
-            .quote-form-container {
-                padding: 2rem;
-                margin: 1rem;
+            .section-title {
+                font-size: 2rem;
             }
-        }
 
-        /* Animations */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeIn 0.8s ease forwards;
-        }
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
 
-        @keyframes fadeIn {
-            to {
-                opacity: 1;
-                transform: translateY(0);
+            .contact-info {
+                gap: 2rem;
             }
         }
     </style>
@@ -785,60 +597,49 @@
 
     <!-- Hero Section -->
     <section class="hero" id="home">
-        <div class="music-notes">
-            <span class="note" style="left: 10%; animation-delay: 0s;">♪</span>
-            <span class="note" style="left: 20%; animation-delay: 1s;">♫</span>
-            <span class="note" style="left: 30%; animation-delay: 2s;">♪</span>
-            <span class="note" style="left: 40%; animation-delay: 3s;">♬</span>
-            <span class="note" style="left: 50%; animation-delay: 4s;">♪</span>
-            <span class="note" style="left: 60%; animation-delay: 5s;">♫</span>
-            <span class="note" style="left: 70%; animation-delay: 6s;">♪</span>
-            <span class="note" style="left: 80%; animation-delay: 7s;">♬</span>
-            <span class="note" style="left: 90%; animation-delay: 8s;">♪</span>
-        </div>
         <div class="hero-content">
-            <h1>Let's Get This <span>Party Started!</span></h1>
-            <p class="tagline">Professional DJ Services for All Your Events</p>
+            <h1>South Wales DJ & Events</h1>
+            <p class="tagline">Premium DJ Services • Weddings • Parties • Corporate Events</p>
             <div class="cta-buttons">
-                <a href="#" class="cta-button" onclick="openQuoteModal()"><span>Get a Quote</span></a>
-                <a href="#gallery" class="cta-button secondary"><span>View Our Work</span></a>
+                <a href="#" class="cta-button" onclick="openQuoteModal()">Get a Quote</a>
+                <a href="#gallery" class="cta-button secondary">View Our Work</a>
             </div>
         </div>
     </section>
 
     <!-- Services Section -->
     <section id="services">
-        <h2 class="section-title">Our DJ Services</h2>
+        <h2 class="section-title">Our Services</h2>
         <div class="services-grid">
-            <div class="service-card fade-in">
+            <div class="service-card">
                 <div class="service-icon">💑</div>
                 <h3>Weddings</h3>
-                <p>Make your special day unforgettable with perfect music from ceremony to last dance. We'll work with you to create the ideal soundtrack.</p>
+                <p>Create the perfect soundtrack for your special day. From ceremony to last dance, we provide seamless entertainment tailored to your vision.</p>
             </div>
-            <div class="service-card fade-in">
+            <div class="service-card">
                 <div class="service-icon">🎂</div>
                 <h3>Birthday Parties</h3>
-                <p>From sweet 16s to 50th celebrations, we bring the energy and music to make your birthday bash legendary!</p>
+                <p>Celebrate in style with professional DJ services. We bring the energy and music to make your birthday celebration unforgettable.</p>
             </div>
-            <div class="service-card fade-in">
+            <div class="service-card">
                 <div class="service-icon">🎄</div>
                 <h3>Corporate Events</h3>
-                <p>Professional entertainment for company parties, product launches, and corporate celebrations. We keep it classy and fun!</p>
+                <p>Professional entertainment for company celebrations, product launches, and corporate functions. Setting the right tone for your business event.</p>
             </div>
-            <div class="service-card fade-in">
+            <div class="service-card">
                 <div class="service-icon">🎓</div>
                 <h3>School Events</h3>
-                <p>Proms, graduations, and school dances - we know how to get students on the dance floor with age-appropriate hits!</p>
+                <p>Proms, graduations, and school dances. Age-appropriate entertainment that gets everyone on the dance floor.</p>
             </div>
-            <div class="service-card fade-in">
+            <div class="service-card">
                 <div class="service-icon">🏖️</div>
                 <h3>Private Parties</h3>
-                <p>House parties, beach parties, or any celebration - we bring professional sound and lighting to events of any size.</p>
+                <p>House parties, celebrations, or any private event. Professional sound and lighting for gatherings of any size.</p>
             </div>
-            <div class="service-card fade-in">
+            <div class="service-card">
                 <div class="service-icon">🎵</div>
                 <h3>Club Nights</h3>
-                <p>Regular slots at venues across Swansea and beyond. Multi-genre expertise from house to hip-hop, we read the crowd perfectly.</p>
+                <p>Regular slots at venues across Swansea and beyond. Multi-genre expertise from house to hip-hop.</p>
             </div>
         </div>
     </section>
@@ -923,7 +724,7 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact">
+    <section id="contact" class="contact-section">
         <h2 class="section-title">Get In Touch</h2>
         <div class="contact-info">
             <div class="contact-card">
@@ -935,8 +736,8 @@
             <div class="contact-card">
                 <div class="contact-icon">📧</div>
                 <h3>Email</h3>
-                <p>bookings@povsound.com</p>
-                <p>info@povsound.com</p>
+                <p><strong>Bookings:</strong> bookings@povsound.com</p>
+                <p><strong>General:</strong> info@povsound.com</p>
             </div>
             <div class="contact-card">
                 <div class="contact-icon">📱</div>
@@ -946,9 +747,8 @@
             </div>
         </div>
         
-        <div style="text-align: center; margin-top: 3rem;">
-            <h3 style="margin-bottom: 1rem;">Ready to make your event unforgettable?</h3>
-            <a href="#" class="cta-button" onclick="openQuoteModal()"><span>Get a Quote</span></a>
+        <div style="text-align: center; margin-top: 4rem;">
+            <a href="#" class="cta-button" onclick="openQuoteModal()">Get a Quote</a>
         </div>
     </section>
 
@@ -1048,10 +848,10 @@
         // Navbar background on scroll
         window.addEventListener('scroll', () => {
             const navbar = document.getElementById('navbar');
-            if (window.scrollY > 100) {
-                navbar.style.background = 'rgba(26, 26, 46, 0.98)';
+            if (window.scrollY > 10) {
+                navbar.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
             } else {
-                navbar.style.background = 'rgba(26, 26, 46, 0.95)';
+                navbar.style.boxShadow = 'none';
             }
         });
 
@@ -1097,26 +897,6 @@
             // Reset form and close modal
             this.reset();
             closeQuoteModal();
-        });
-
-        // Intersection Observer for fade-in animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.animationDelay = '0.1s';
-                    entry.target.style.animationPlayState = 'running';
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.fade-in').forEach(el => {
-            el.style.animationPlayState = 'paused';
-            observer.observe(el);
         });
 
         // Gallery Slider Functionality
@@ -1196,39 +976,3 @@
         // Previous slide
         function prevSlide() {
             if (filteredItems.length === 0) return;
-            
-            filteredItems[currentSlide].classList.remove('active');
-            currentSlide = (currentSlide - 1 + filteredItems.length) % filteredItems.length;
-            filteredItems[currentSlide].classList.add('active');
-            updateDots();
-        }
-
-        // Update dots
-        function updateDots() {
-            const dots = dotsContainer.querySelectorAll('.dot');
-            dots.forEach((dot, index) => {
-                dot.classList.toggle('active', index === currentSlide);
-            });
-        }
-
-        // Event listeners
-        prevBtn.addEventListener('click', prevSlide);
-        nextBtn.addEventListener('click', nextSlide);
-
-        categoryBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                categoryBtns.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                filterGallery(btn.dataset.category);
-            });
-        });
-
-        // Auto-play slider
-        setInterval(nextSlide, 5000);
-
-        // Initialize
-        createDots();
-        filterGallery('all');
-    </script>
-</body>
-</html>

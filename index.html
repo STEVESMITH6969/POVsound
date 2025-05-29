@@ -976,3 +976,39 @@
         // Previous slide
         function prevSlide() {
             if (filteredItems.length === 0) return;
+            
+            filteredItems[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide - 1 + filteredItems.length) % filteredItems.length;
+            filteredItems[currentSlide].classList.add('active');
+            updateDots();
+        }
+
+        // Update dots
+        function updateDots() {
+            const dots = dotsContainer.querySelectorAll('.dot');
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentSlide);
+            });
+        }
+
+        // Event listeners
+        prevBtn.addEventListener('click', prevSlide);
+        nextBtn.addEventListener('click', nextSlide);
+
+        categoryBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                categoryBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                filterGallery(btn.dataset.category);
+            });
+        });
+
+        // Auto-play slider
+        setInterval(nextSlide, 5000);
+
+        // Initialize
+        createDots();
+        filterGallery('all');
+    </script>
+</body>
+</html>

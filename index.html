@@ -135,6 +135,7 @@
             font-weight: 500;
             transition: all 0.3s ease;
             border: 2px solid var(--primary);
+            cursor: pointer;
         }
 
         .cta-button:hover {
@@ -453,6 +454,11 @@
             opacity: 0.8;
         }
 
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
         /* Contact Section */
         .contact-section {
             background: var(--light-gray);
@@ -601,7 +607,7 @@
             <h1>South Wales DJ & Events</h1>
             <p class="tagline">Premium DJ Services • Weddings • Parties • Corporate Events</p>
             <div class="cta-buttons">
-                <a href="#" class="cta-button" onclick="openQuoteModal()">Get a Quote</a>
+                <button class="cta-button" onclick="openQuoteModal()">Get a Quote</button>
                 <a href="#gallery" class="cta-button secondary">View Our Work</a>
             </div>
         </div>
@@ -709,8 +715,4 @@
                     <img src="images/Beth birthday pic.jpg" alt="Birthday Celebration">
                     <div class="gallery-caption">
                         <h3>Surprise 30th Birthday</h3>
-                        <p>The Garage, Swansea</p>
-                    </div>
-                </div>
-
-                <!-- Navigation Butt
+       

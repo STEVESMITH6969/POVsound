@@ -136,11 +136,13 @@
             transition: all 0.3s ease;
             border: 2px solid var(--primary);
             cursor: pointer;
+            border: none;
         }
 
         .cta-button:hover {
             background: var(--white);
             color: var(--primary);
+            border: 2px solid var(--primary);
         }
 
         .cta-button.secondary {
@@ -535,7 +537,7 @@
                 box-shadow: 0 5px 20px rgba(0,0,0,0.1);
             }
 
-            .nav-links.active {
+            .nav-links.show {
                 display: flex;
             }
 
@@ -607,7 +609,7 @@
             <h1>South Wales DJ & Events</h1>
             <p class="tagline">Premium DJ Services • Weddings • Parties • Corporate Events</p>
             <div class="cta-buttons">
-                <button class="cta-button" onclick="openQuoteModal()">Get a Quote</button>
+                <button class="cta-button" id="openQuoteBtn">Get a Quote</button>
                 <a href="#gallery" class="cta-button secondary">View Our Work</a>
             </div>
         </div>
@@ -715,4 +717,316 @@
                     <img src="images/Beth birthday pic.jpg" alt="Birthday Celebration">
                     <div class="gallery-caption">
                         <h3>Surprise 30th Birthday</h3>
-       
+                        <p>The Garage, Swansea</p>
+                    </div>
+                </div>
+
+                <!-- Navigation Buttons -->
+                <button class="gallery-nav prev" id="prevBtn">❮</button>
+                <button class="gallery-nav next" id="nextBtn">❯</button>
+            </div>
+
+            <!-- Dots Indicator -->
+            <div class="gallery-dots" id="galleryDots"></div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <h2 class="section-title">Get In Touch</h2>
+        <div class="contact-info">
+            <div class="contact-card">
+                <div class="contact-icon">📍</div>
+                <h3>Location</h3>
+                <p>Swansea, South Wales</p>
+                <p>Available throughout Wales & Southwest England</p>
+            </div>
+            <div class="contact-card">
+                <div class="contact-icon">📧</div>
+                <h3>Email</h3>
+                <p><strong>Bookings:</strong> bookings@povsound.com</p>
+                <p><strong>General:</strong> info@povsound.com</p>
+            </div>
+            <div class="contact-card">
+                <div class="contact-icon">📱</div>
+                <h3>Social Media</h3>
+                <p>Instagram: @pov_sound</p>
+                <p>Mixcloud: DJ_POV</p>
+            </div>
+        </div>
+        
+        <div style="text-align: center; margin-top: 4rem;">
+            <button class="cta-button" id="openQuoteBtn2">Get a Quote</button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 POV SOUND - Professional DJ Services</p>
+        <p>Multi-genre DJs | 7kW+ PA System | Serving Swansea & Beyond</p>
+    </footer>
+
+    <!-- Quote Modal -->
+    <div class="quote-modal" id="quoteModal">
+        <div class="quote-form-container">
+            <button class="close-modal" id="closeModalBtn">×</button>
+            <form action="https://api.web3forms.com/submit" method="POST" class="quote-form" id="quoteForm">
+                <!-- Web3Forms hidden fields -->
+                <input type="hidden" name="access_key" value="3bf7b14a-fb15-4030-8f44-219f69339827">
+                <input type="hidden" name="subject" value="New Quote Request - POV Sound">
+                <input type="hidden" name="from_name" value="POV Sound Website">
+                <input type="hidden" name="redirect" value="https://web3forms.com/success">
+                
+                <h2>Get Your Free Quote</h2>
+                
+                <div class="form-group">
+                    <label for="name">Your Name *</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email Address *</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone">
+                </div>
+                
+                <div class="form-group">
+                    <label for="eventType">Event Type *</label>
+                    <select id="eventType" name="event_type" required>
+                        <option value="">Select Event Type</option>
+                        <option value="wedding">Wedding</option>
+                        <option value="birthday">Birthday Party</option>
+                        <option value="corporate">Corporate Event</option>
+                        <option value="school">School Event</option>
+                        <option value="private">Private Party</option>
+                        <option value="club">Club Night</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="eventDate">Event Date *</label>
+                    <input type="date" id="eventDate" name="event_date" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="venue">Venue Name & Location *</label>
+                    <input type="text" id="venue" name="venue" required placeholder="e.g., Oxwich Bay Hotel, Gower">
+                </div>
+                
+                <div class="form-group">
+                    <label for="guestCount">Approximate Number of Guests</label>
+                    <input type="number" id="guestCount" name="guest_count" placeholder="e.g., 150">
+                </div>
+                
+                <div class="form-group">
+                    <label for="duration">Event Duration (hours)</label>
+                    <input type="number" id="duration" name="duration" placeholder="e.g., 5">
+                </div>
+                
+                <div class="form-group">
+                    <label for="specialRequests">Special Requests / Additional Information</label>
+                    <textarea id="specialRequests" name="message" placeholder="Tell us about your music preferences, special songs, lighting requirements, or any other details..."></textarea>
+                </div>
+                
+                <button type="submit" class="submit-btn">Send Quote Request</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('JavaScript loaded successfully!');
+            
+            const mobileToggle = document.getElementById('mobileToggle');
+            const navLinks = document.getElementById('navLinks');
+            
+            if (mobileToggle && navLinks) {
+                mobileToggle.addEventListener('click', function() {
+                    navLinks.classList.toggle('show');
+                });
+            }
+
+            const modal = document.getElementById('quoteModal');
+            const openBtns = document.querySelectorAll('#openQuoteBtn, #openQuoteBtn2');
+            const closeBtn = document.getElementById('closeModalBtn');
+            
+            openBtns.forEach(btn => {
+                if (btn) {
+                    btn.addEventListener('click', function() {
+                        modal.style.display = 'flex';
+                        modal.classList.add('active');
+                        document.body.style.overflow = 'hidden';
+                    });
+                }
+            });
+            
+            if (closeBtn) {
+                closeBtn.addEventListener('click', function() {
+                    modal.style.display = 'none';
+                    modal.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                });
+            }
+            
+            if (modal) {
+                modal.addEventListener('click', function(e) {
+                    if (e.target === modal) {
+                        modal.style.display = 'none';
+                        modal.classList.remove('active');
+                        document.body.style.overflow = 'auto';
+                    }
+                });
+            }
+
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        navLinks.classList.remove('show');
+                    }
+                });
+            });
+
+            const galleryItems = document.querySelectorAll('.gallery-item');
+            const categoryBtns = document.querySelectorAll('.category-btn');
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            const dotsContainer = document.getElementById('galleryDots');
+            
+            let currentSlide = 0;
+            let filteredItems = Array.from(galleryItems);
+
+            function createDots() {
+                if (dotsContainer) {
+                    dotsContainer.innerHTML = '';
+                    filteredItems.forEach((_, index) => {
+                        const dot = document.createElement('div');
+                        dot.className = 'dot';
+                        if (index === 0) dot.classList.add('active');
+                        dot.addEventListener('click', () => goToSlide(index));
+                        dotsContainer.appendChild(dot);
+                    });
+                }
+            }
+
+            function filterGallery(category) {
+                if (category === 'all') {
+                    filteredItems = Array.from(galleryItems);
+                } else {
+                    filteredItems = Array.from(galleryItems).filter(item => 
+                        item.dataset.category === category
+                    );
+                }
+                
+                galleryItems.forEach(item => {
+                    item.classList.remove('active');
+                    item.style.display = 'none';
+                });
+                
+                filteredItems.forEach(item => {
+                    item.style.display = 'block';
+                });
+                
+                currentSlide = 0;
+                if (filteredItems.length > 0) {
+                    filteredItems[0].classList.add('active');
+                }
+                
+                createDots();
+                updateDots();
+            }
+
+            function goToSlide(index) {
+                if (filteredItems.length === 0) return;
+                
+                filteredItems[currentSlide].classList.remove('active');
+                currentSlide = index;
+                filteredItems[currentSlide].classList.add('active');
+                updateDots();
+            }
+
+            function nextSlide() {
+                if (filteredItems.length === 0) return;
+                
+                filteredItems[currentSlide].classList.remove('active');
+                currentSlide= (currentSlide + 1) % filteredItems.length;
+                filteredItems[currentSlide].classList.add('active');
+                updateDots();
+            }
+
+            function prevSlide() {
+                if (filteredItems.length === 0) return;
+                
+                filteredItems[currentSlide].classList.remove('active');
+                currentSlide = (currentSlide - 1 + filteredItems.length) % filteredItems.length;
+                filteredItems[currentSlide].classList.add('active');
+                updateDots();
+            }
+
+            function updateDots() {
+                if (dotsContainer) {
+                    const dots = dotsContainer.querySelectorAll('.dot');
+                    dots.forEach((dot, index) => {
+                        dot.classList.toggle('active', index === currentSlide);
+                    });
+                }
+            }
+
+            if (prevBtn) {
+                prevBtn.addEventListener('click', prevSlide);
+            }
+            
+            if (nextBtn) {
+                nextBtn.addEventListener('click', nextSlide);
+            }
+
+            categoryBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    categoryBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    filterGallery(this.dataset.category);
+                });
+            });
+
+            setInterval(nextSlide, 5000);
+            createDots();
+            filterGallery('all');
+
+            const form = document.getElementById('quoteForm');
+            if (form) {
+                form.addEventListener('submit', function(e) {
+                    const submitBtn = this.querySelector('.submit-btn');
+                    if (submitBtn) {
+                        const originalText = submitBtn.textContent;
+                        submitBtn.textContent = 'Sending...';
+                        submitBtn.disabled = true;
+                        
+                        setTimeout(() => {
+                            submitBtn.textContent = originalText;
+                            submitBtn.disabled = false;
+                        }, 3000);
+                    }
+                });
+            }
+
+            window.addEventListener('scroll', function() {
+                const navbar = document.getElementById('navbar');
+                if (navbar) {
+                    if (window.scrollY > 10) {
+                        navbar.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
+                    } else {
+                        navbar.style.boxShadow = 'none';
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
